@@ -4,7 +4,7 @@ import { ReactComponent as SearchIcon } from "../../assets/search-icon.svg";
 import { styled } from "@mui/system";
 // import { truncate } from "../../helpers/helpers";
 import { useNavigate } from "react-router-dom";
-import { Tooltip, useAutocomplete } from "@mui/material";
+import { useAutocomplete } from "@mui/material"; // Tooltip
 
 const Listbox = styled("ul")(({ theme }) => ({
   width: "100%",
@@ -38,7 +38,7 @@ const Listbox = styled("ul")(({ theme }) => ({
 function Search({ searchData, placeholder }) {
   const {
     getRootProps,
-    getInputLabelProps,
+    // getInputLabelProps,
     value,
     getInputProps,
     getListboxProps,
@@ -84,8 +84,8 @@ function Search({ searchData, placeholder }) {
       {groupedOptions.length > 0 ? (
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => {
-            // console.log(option);
-            const artists = option.songs.reduce((accumulator, currentValue) => {
+            //  const artists =
+            option.songs.reduce((accumulator, currentValue) => {
               accumulator.push(...currentValue.artists);
               return accumulator;
             }, []);
@@ -104,7 +104,7 @@ function Search({ searchData, placeholder }) {
                 </div>
               </li>
             );
-          })}
+          };)}
         </Listbox>
       ) : null}
     </div>
