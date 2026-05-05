@@ -1,7 +1,7 @@
 .section {
   padding: 10px;
-  color: var(--color-white);
-  background-color: var(--color-black);
+  color: var(--color-white) !important;
+  background-color: var(--color-black) !important;
 }
 
 .header {
@@ -23,4 +23,39 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 15px 10px;
+}
+.sliderWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+}
+
+.arrowLeft,
+.arrowRight {
+  position: absolute;
+  z-index: 2;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  color: var(--color-black);
+  font-size: 18px;
+}
+
+.arrowLeft {
+  left: -10px;
+}
+
+.arrowRight {
+  right: -10px;
 }

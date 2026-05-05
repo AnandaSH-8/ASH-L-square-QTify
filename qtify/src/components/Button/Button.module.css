@@ -1,12 +1,12 @@
 .buttonStyle {
-  background-color: #000;
-  color: var(--color-primary);
-  border-radius: 10px;
-  padding: 10px 13px;
-  font-size: 16px;
-  font-weight: 800;
-  text-transform: none;
-  font-family: "Poppins", sans-serif;
+  background-color: #000 !important;
+  color: var(--color-primary  ) !important;
+  border-radius: 10px !important;
+  padding: 10px 13px !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  text-transform: none !important;
+  font-family: "Poppins", sans-serif !important;
 }
 
 .buttonStyle:hover {
