@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Section.module.css";
 import axios from "axios";
 import AlbumCard from "../AlbumCard/AlbumCard";
@@ -6,27 +6,22 @@ import AlbumCard from "../AlbumCard/AlbumCard";
 export default function Section({ title, endpoint }) {
   const [data, setData] = useState([]);
   const [showAll, setShowAll] = useState(false);
-  const [startIndex, setStartIndex] = useState(0);
-
-  const VISIBLE_CARDS = 9;
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     axios.get(endpoint).then((res) => setData(res.data));
   }, [endpoint]);
 
-  const handleNext = () => {
-    if (startIndex + VISIBLE_CARDS < data.length) {
-      setStartIndex(startIndex + 1);
-    }
-  };
+  const scroll = (direction) => {
+    if (!sliderRef.current) return;
 
-  const handlePrev = () => {
-    if (startIndex > 0) {
-      setStartIndex(startIndex - 1);
-    }
-  };
+    const scrollAmount = 300; // adjust if needed
 
-  const visibleData = data.slice(startIndex, startIndex + VISIBLE_CARDS);
+    sliderRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className={styles.section}>
@@ -41,6 +36,7 @@ export default function Section({ title, endpoint }) {
         </button>
       </div>
 
+      {/* GRID VIEW */}
       {showAll ? (
         <div className={styles.grid}>
           {data.map((album) => (
@@ -48,18 +44,19 @@ export default function Section({ title, endpoint }) {
           ))}
         </div>
       ) : (
+        /* SLIDER VIEW */
         <div className={styles.sliderWrapper}>
-          <button className={styles.arrowLeft} onClick={handlePrev}>
+          <button className={styles.arrowLeft} onClick={() => scroll("left")}>
             ❮
           </button>
 
-          <div className={styles.slider}>
-            {visibleData.map((album) => (
+          <div className={styles.slider} ref={sliderRef}>
+            {data.map((album) => (
               <AlbumCard key={album.id} {...album} />
             ))}
           </div>
 
-          <button className={styles.arrowRight} onClick={handleNext}>
+          <button className={styles.arrowRight} onClick={() => scroll("right")}>
             ❯
           </button>
         </div>
