@@ -26,8 +26,8 @@
 }
 
 .chip {
-  background-color: var(--color-white) !important;
-  color: var(--color-black) !important;
+  background-color: var(--color-black) !important;
+  color: var(--color-white) !important;
   font-weight: 600;
   font-size: 12px;
 }

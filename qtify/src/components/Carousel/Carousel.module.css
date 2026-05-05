@@ -1,0 +1,15 @@
+.wrapper {
+  position: relative;
+  margin-left: 10px;
+}
+
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 6px;
+  box-sizing: border-box;
+}

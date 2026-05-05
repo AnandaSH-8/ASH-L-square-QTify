@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./AlbumCard.module.css";
 import Chip from "@mui/material/Chip";
 
-export default function AlbumCard({ image, follows, title }) {
+export default function AlbumCard({ image, follows, title, isSong }) {
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
@@ -10,7 +10,7 @@ export default function AlbumCard({ image, follows, title }) {
 
         <div className={styles.chipWrapper}>
           <Chip
-            label={`${follows} Follows`}
+            label={isSong ? `${follows} Likes` : `${follows} Follows`}
             size="small"
             className={styles.chip}
           />

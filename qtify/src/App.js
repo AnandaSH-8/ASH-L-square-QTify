@@ -17,6 +17,11 @@ function App() {
         title="New Albums"
         endpoint="https://qtify-backend.labs.crio.do/albums/new"
       />
+      <Section
+        title="Songs"
+        endpoint="https://qtify-backend.labs.crio.do/songs"
+        isSongsSection={true}
+      />
     </div>
   );
 }
